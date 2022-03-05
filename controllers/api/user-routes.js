@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // GET // localhost:3001/api/users/
@@ -93,8 +94,52 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// POST login // localhost:3001/api/users/login
+router.post('/login', (req, res) => {
+    // expects {username: 'LindseyM', password: 'password'}
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that username!' });
+            return;
+        }
+
+        // verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
+});
+
+// logout route
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
+});
+
 // DELETE // localhost:3001/api/users/1
-router.delete('/:id', (req, res) => {  // add this function in: withAuth
+// in order for user to delete their user id, they must be logged in
+router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
         where: {
             id: req.params.id

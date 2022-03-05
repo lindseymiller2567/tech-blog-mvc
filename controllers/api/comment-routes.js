@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
+
 
 // GET // localhost:3001/api/comments/
 router.get('/', (req, res) => {

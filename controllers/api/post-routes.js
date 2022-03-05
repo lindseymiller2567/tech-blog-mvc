@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
+
 
 // GET // localhost:3001/api/posts/
 router.get('/', (req, res) => {
@@ -115,7 +117,8 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE a post // localhost:3001/api/posts/1
-router.delete('/:id', (req, res) => {  //withAuth
+// in order for user to delete their post, they must be logged in
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id
