@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session');
-// const exphbs = require('express-handlebars'); // require handlebars 
+const exphbs = require('express-handlebars'); // require handlebars 
 // const helpers = require('./utils/helpers'); // require helper functions 
 
 const app = express();
@@ -21,9 +21,14 @@ const sess = {
 
 app.use(session(sess));
 
+const hbs = exphbs.create({})
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 // turn on routes
 const routes = require('./controllers/');

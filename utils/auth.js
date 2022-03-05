@@ -1,4 +1,4 @@
-// Authhaurd routes
+// Authgaurd routes
 // check if a user is logged and if not, re-route them to the login page
 
 const withAuth = (req, res, next) => {
