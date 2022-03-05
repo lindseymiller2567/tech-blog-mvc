@@ -4,7 +4,7 @@ const { Post, User, Comment } = require('../../models');
 // GET // localhost:3001/api/posts/
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: [ // attributes is what we want to see in the response
+        attributes: [ // attributes is what we want to see in the api response
             'id',
             'title',
             'post_content',
@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
         });
 });
 
-// PUT or update the post's title
+// PUT update the post's title // localhost:3001/api/posts/1
 router.put('/:id', (req, res) => {
     Post.update(
         {
@@ -101,6 +101,26 @@ router.put('/:id', (req, res) => {
             }
         }
     )
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            res.json(dbPostData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+// DELETE a post // localhost:3001/api/posts/1
+router.delete('/:id', (req, res) => {  //withAuth
+    Post.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
         .then(dbPostData => {
             if (!dbPostData) {
                 res.status(404).json({ message: 'No post found with this id' });
