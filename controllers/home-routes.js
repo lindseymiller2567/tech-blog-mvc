@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
             const posts = dbPostData.map(post => post.get({ plain: true })); // Sequelize's get() method
             res.render('homepage', {
                 posts,
-                // loggedIn: req.session.loggedIn
+                loggedIn: req.session.loggedIn
             })
         })
         .catch(err => {
@@ -40,7 +40,12 @@ router.get('/', (req, res) => {
         });
 });
 
+// View Login page, if user is already logged in, then page redirects to the homepage
 router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     res.render('login')
 });
 
