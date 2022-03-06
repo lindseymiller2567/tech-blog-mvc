@@ -16,6 +16,7 @@ async function signupFormHandler(event) {
 
         if (response.ok) {
             console.log('sucess')
+            document.location.replace('/'); // or redirect to dashboard ? 
         } else {
             alert(response.statusText)
         }

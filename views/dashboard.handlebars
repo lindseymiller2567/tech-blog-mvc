@@ -1,0 +1,41 @@
+<h2>Dashboard</h2>
+
+{{#if posts.length}}
+<section>
+    <ul class="post-list">
+        {{#each posts as |post|}}
+        <li>
+            <article class="post">
+                <div class="title">
+                    <a href="#" target="_blank">{{title}}</a>
+                    <span>Created on: {{created_at}}</span>
+                </div>
+                <div class="meta">
+                    {{post_content}}
+                </div>
+            </article>
+        </li>
+        {{/each}}
+    </ul>
+</section>
+{{/if}}
+
+<section>
+    <h3>Create new post</h3>
+
+    <form class="new-post">
+        <div>
+            <label for="post-title">Title</label>
+            <input type="text" id="post-title" name="post-title" />
+        </div>
+
+        <div>
+            <label for="post-content">Content</label>
+            <textarea id="post-content" name="post-content"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Create</button>
+    </form>
+</section>
+
+<script src="/javascript/add-post.js"></script>

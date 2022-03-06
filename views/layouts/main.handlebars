@@ -18,14 +18,17 @@
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
           </li>
-          <li>
-            <a href="/login">Login</a>
-          </li>
+          {{#if loggedIn}}
           <li>
             <button id="logout" class="btn-no-style">Logout</button>
           </li>
+          {{else}}
+          <li>
+            <a href="/login">Login</a>
+          </li>
+          {{/if}}
         </ul>
       </nav>
 

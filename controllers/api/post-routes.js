@@ -80,7 +80,7 @@ router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         post_content: req.body.post_content,
-        user_id: req.session.user_id // will need to change this to: req.session.user_id // grabs user id from the session instead of body
+        user_id: req.session.user_id // grabs user id from the session instead of body
     })
         .then(dbPostData => {
             res.json(dbPostData);

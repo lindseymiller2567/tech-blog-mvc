@@ -53,4 +53,31 @@ router.get('/signup', (req, res) => {
     res.render('signup')
 })
 
+// View user's dashboard with all their posts 
+router.get('/dashboard', (req, res) => {
+    Post.findAll({
+        where: {
+            id: req.session.user_id
+        },
+        attributes: [
+            'id',
+            'title',
+            'post_content',
+            'created_at'
+        ]
+    })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true })); // Sequelize's get() method
+            res.render('dashboard', {
+                posts,
+                loggedIn: req.session.loggedIn
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+})
+
+
 module.exports = router;
