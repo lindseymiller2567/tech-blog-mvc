@@ -1,17 +1,18 @@
+<!-- homepage - displays list of all posts -->
 <ul class="post-list">
     {{#each posts}}
     <li>
         <article class="post">
 
             <div class="title">
-                <a href="#" target="_blank">{{title}}</a>
+                <a href="/post/{{id}}" target="">{{title}}</a>
                 <span>Posted By: {{user.username}}</span>
             </div>
 
             <div class="meta">
                 {{post_content}}
             </div>
-            
+
         </article>
     </li>
     {{/each}}

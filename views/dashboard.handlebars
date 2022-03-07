@@ -1,4 +1,4 @@
-<h2>Dashboard</h2>
+<h2>{{user.username}} Dashboard</h2>
 
 {{#if posts.length}}
 <section>
@@ -7,8 +7,7 @@
         <li>
             <article class="post">
                 <div class="title">
-                    <a href="#" target="_blank">{{title}}</a>
-                    <span>Created on: {{created_at}}</span>
+                    <a href="/post/{{id}}" target="">{{title}}</a>
                 </div>
                 <div class="meta">
                     {{post_content}}
@@ -21,7 +20,7 @@
 {{/if}}
 
 <section>
-    <h3>Create new post</h3>
+    <h2>Create new post</h2>
 
     <form class="new-post">
         <div>

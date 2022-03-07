@@ -17,10 +17,10 @@
           <li>
             <a href="/">Home</a>
           </li>
+          {{#if loggedIn}}
           <li>
             <a href="/dashboard">Dashboard</a>
           </li>
-          {{#if loggedIn}}
           <li>
             <button id="logout" class="btn-no-style">Logout</button>
           </li>
@@ -33,7 +33,7 @@
       </nav>
 
       <h1>
-        Tech Blog
+        The Tech Blog
       </h1>
 
     </header>
