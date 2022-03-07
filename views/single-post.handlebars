@@ -1,7 +1,7 @@
 <!-- display post -->
 <article class="post">
     <div class="title">
-        <a href="#" target="_blank">{{post.title}}</a>
+        <a href="" target="">{{post.title}}</a>
         <span>Posted by {{post.user.username}}</span>
     </div>
     <div class="meta">
@@ -25,6 +25,7 @@
 </div>
 
 <!-- comment form to add comment -->
+<h3>Join the Conversation!</h3>
 <form class="comment-form">
     <div>
         <textarea name="comment-body"></textarea>
@@ -34,3 +35,7 @@
         <button type="submit">add comment</button>
     </div>
 </form>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

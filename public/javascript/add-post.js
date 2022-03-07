@@ -15,7 +15,7 @@ async function newPostHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard'); // or redirect to dashboard ? 
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
