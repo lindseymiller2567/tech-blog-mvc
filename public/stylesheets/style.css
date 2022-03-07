@@ -103,12 +103,11 @@
     padding: 2% 4%;
   }
 
-  /* dashboard */
-  section {
-    background-color:lightslategrey;
-    padding: 30px;
-    margin: 40px 0;
-  }
+  /* home page post lists */
+  .post-list .meta {
+    padding-bottom: 10px;
+    border-bottom: 1pt solid black;
+  }  
 
   /* buttons */
   .btn-no-style {
@@ -171,7 +170,7 @@
     margin-bottom: .5%;
     opacity: .6;
   }
-  
+
   .new-post-form input {
     width: 300px;
   }
@@ -181,9 +180,10 @@
   }
   
   footer {
-    border-top: 1px solid #ccc;
+    background-color: black;
+    color: white;
     display: flex;
     justify-content: center;
     padding: 1%;
-    font-size: 110%;
+    font-size: 90%;
   }

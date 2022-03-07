@@ -2,14 +2,16 @@
     {{#each posts}}
     <li>
         <article class="post">
+
             <div class="title">
                 <a href="#" target="_blank">{{title}}</a>
-                <span>By: {{user.username}} on {{created_at}}</span>
+                <span>Posted By: {{user.username}}</span>
             </div>
+
             <div class="meta">
                 {{post_content}}
-                <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
             </div>
+            
         </article>
     </li>
     {{/each}}
