@@ -56,6 +56,13 @@ router.get('/signup', (req, res) => {
 
 // View user's dashboard with all their posts 
 router.get('/dashboard', (req, res) => {
+
+    // reroute user to home page if they are not logged in 
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    };
+
     Post.findAll({
         where: {
             user_id: req.session.user_id

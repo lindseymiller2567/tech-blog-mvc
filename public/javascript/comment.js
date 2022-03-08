@@ -7,27 +7,27 @@ async function commentFormHandler(event) {
         window.location.toString().split('/').length - 1
     ];
 
-    console.log(comment_text, post_id);
+    // console.log(comment_text, post_id);
 
     // wrap entire request in an if statement to prevent users from submitting empty strings
-    // if (comment_text) {
-    //     const response = await fetch('/api/comment', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             post_id,
-    //             comment_text
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     });
+    if (comment_text) {
+        const response = await fetch('/api/comments', {
+            method: 'POST',
+            body: JSON.stringify({
+                post_id,
+                comment_text
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-    //     if (response.ok) {
-    //         document.location.reload();
-    //     } else {
-    //         alert(response.statusText);
-    //     }
-    // }
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            alert(response.statusText);
+        }
+    }
 }
 
 document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);

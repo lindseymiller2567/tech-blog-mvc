@@ -10,6 +10,7 @@
     </div>
 </article>
 
+{{#if loggedIn}}
 <!-- display comments -->
 <div class="comments">
     {{#each post.comments}}
@@ -35,6 +36,20 @@
         <button type="submit">add comment</button>
     </div>
 </form>
+
+{{else}}
+<!-- if not logged in display message to log in -->
+<div class="comments">
+    {{#each post.comments}}
+    <section class="comment">
+        <div class="text">
+            Login or Sign-up to view and add comments.
+        </div>
+    </section>
+    {{/each}}
+</div>
+{{/if}}
+
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
