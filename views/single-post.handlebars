@@ -30,6 +30,7 @@
 <div>
     <!-- open model - edit post button -->
     <button type="submit" id="edit-post" class="btn">Edit Post</button>
+    <button type="submit" id="delete-post-btn">Delete Post</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -69,13 +70,11 @@
 {{else}}
 <!-- if not logged in display message to log in -->
 <div class="comments">
-    {{#each post.comments}}
     <section class="comment">
         <div class="text">
             Login or Sign-up to view and add comments.
         </div>
     </section>
-    {{/each}}
 </div>
 {{/if}}
 
@@ -83,4 +82,5 @@
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
 {{/if}}
