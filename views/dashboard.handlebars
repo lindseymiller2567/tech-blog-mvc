@@ -1,5 +1,6 @@
 <h2>{{user.username}} Dashboard</h2>
 
+<!-- shows all the user's posts -->
 {{#if posts.length}}
 <section>
     <ul class="post-list">
@@ -7,7 +8,7 @@
         <li>
             <article class="post">
                 <div class="title">
-                    <a href="/post/{{id}}" target="">{{title}}</a>
+                    <a href="/post/{{id}}" target="" id="post-title">{{title}}</a>
                 </div>
                 <div class="meta">
                     {{post_content}}
@@ -19,6 +20,7 @@
 </section>
 {{/if}}
 
+<!-- form to create a new post -->
 <section>
     <h2>Create new post</h2>
 

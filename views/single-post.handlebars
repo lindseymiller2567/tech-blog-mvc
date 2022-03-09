@@ -25,6 +25,35 @@
     {{/each}}
 </div>
 
+
+<!-- MODEL -->
+<div>
+    <!-- open model - edit post button -->
+    <button type="submit" id="edit-post" class="btn">Edit Post</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div>
+                <p>Edit Title:</p>
+                <textarea class="edit-title-textarea">{{post.title}}</textarea>
+            </div>
+            <div>
+                <p>Edit Content:</p>
+                <textarea class="edit-post-textarea">{{post.post_content}}</textarea>
+            </div>
+            <div>
+                <button type="submit" id="edit-post-btn">Save Changes</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <!-- comment form to add comment -->
 <h3>Join the Conversation!</h3>
 <form class="comment-form">
@@ -33,7 +62,7 @@
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="submit">Add Comment</button>
     </div>
 </form>
 
@@ -53,4 +82,5 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/edit-post.js"></script>
 {{/if}}
