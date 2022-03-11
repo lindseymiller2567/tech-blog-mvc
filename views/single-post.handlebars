@@ -25,17 +25,16 @@
     {{/each}}
 </div>
 
-
-<!-- MODEL -->
+{{!-- <!-- display edit or delete buttons -->
 <div>
-    <!-- open model - edit post button -->
+    <!-- only show these options if this is logged-in user's post -->
+
     <button type="submit" id="edit-post" class="btn">Edit Post</button>
     <button type="submit" id="delete-post-btn">Delete Post</button>
 
-    <!-- The Modal -->
+    <!-- modal for editting post -->
     <div id="myModal" class="modal">
 
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <div>
@@ -52,7 +51,7 @@
         </div>
 
     </div>
-</div>
+</div> --}}
 
 
 <!-- comment form to add comment -->
@@ -81,6 +80,6 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+{{!-- <script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script> --}}
 {{/if}}
