@@ -1,4 +1,4 @@
-<h2>{{posts.user.username}} Dashboard</h2>
+<h2>{{username.user.username}}'s Dashboard</h2>
 
 <!-- shows all the user's posts -->
 {{#if posts.length}}
@@ -13,7 +13,7 @@
                 <div class="meta">
                     {{post_content}}
                     <br />
-                    <!-- display edit or delete buttons -->
+                    <!-- display edit button -->
                     <a href="/editpost/{{id}}">
                         <button type="submit" id="edit-post" class="btn">Edit Post</button>
                     </a>
@@ -24,29 +24,6 @@
     </ul>
 </section>
 {{/if}}
-
-
-{{!-- <div>
-    <!-- modal for editting post -->
-    <div id="myModal" class="modal">
-
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div>
-                <p>Edit Title:</p>
-                <textarea class="edit-title-textarea">{{post.title}}</textarea>
-            </div>
-            <div>
-                <p>Edit Content:</p>
-                <textarea class="edit-post-textarea">{{post.post_content}}</textarea>
-            </div>
-            <div>
-                <button type="submit" id="edit-post-btn">Save Changes</button>
-            </div>
-        </div>
-
-    </div>
-</div> --}}
 
 <!-- form to create a new post -->
 <section>

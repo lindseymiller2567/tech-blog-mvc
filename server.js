@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars'); // require handlebars 
-// const helpers = require('./utils/helpers'); // require helper functions if any
+const helpers = require('./utils/helpers'); // require helper functions if any
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -9,9 +9,13 @@ const app = express();
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const hour = 3600000
+
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {
+        expires: new Date(Date.now() + hour)
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -21,7 +25,7 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({}) // pass the helpers to the existing exphbs.create() statement
+const hbs = exphbs.create({ helpers }) // pass the helpers to the existing exphbs.create() statement
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

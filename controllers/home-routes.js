@@ -85,6 +85,7 @@ router.get('/dashboard', (req, res) => {
             console.log(posts)
             res.render('dashboard', {
                 posts,
+                username: posts[0],
                 loggedIn: req.session.loggedIn
             })
         })
